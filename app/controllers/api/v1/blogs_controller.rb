@@ -20,7 +20,21 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
 
-  
+  # def update
+  #   @blog.update()
+  #
+  # end
 
+
+ private
+
+ def blog_params
+   params.permit(:title, :content, :user_id, :date)
+
+ end
+
+ def find_blog
+   @blog - Blog.find(params[:id])
+ end
 
 end
