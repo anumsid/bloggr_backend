@@ -1,6 +1,6 @@
 class Api::V1::BlogsController < ApplicationController
 
-
+  before_action :find_blog, only: [:show, :update]
 
   def index
     @blogs = Blog.all
@@ -17,14 +17,18 @@ class Api::V1::BlogsController < ApplicationController
     if @blog.save
       render json: @blog, status: :accepted
     else
-      render json: {}
+      render json: {errors: @blog.errors.full_messages}, status: :unprocessible_entity
     end
   end
 
-  # def update
-  #   @blog.update()
-  #
-  # end
+  def update
+    @blog.update(blog_params)
+    if @blog.save
+      render json: @blog, status: :accepted
+    else
+      render json: {errors: @blog.errors.full_messages}, status: :unprocessible_entity
+    end
+  end
 
 
  private
@@ -35,7 +39,7 @@ class Api::V1::BlogsController < ApplicationController
  end
 
  def find_blog
-   @blog - Blog.find(params[:id])
+   @blog = Blog.find(params[:id])
  end
 
 end
