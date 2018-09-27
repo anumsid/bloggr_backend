@@ -14,6 +14,6 @@ blog1 = Blog.create(title: "First Day in Rome", content: "From there, we walked 
 
 blog2 = Blog.create(title: "First Day in France", content: "I finished off my first day in France by baking a cheese souffle with the girls for dinner. Making souffle had always intimidate me – what if, god forbid, it were to deflate, like in all the movies?", user_id: user2.id, date: "September 1, 2018")
 
-comment1 = Comment.create(content: "Great blog post!", user_id: user1.id)
+comment1 = Comment.create(content: "Great blog post!", user_id: user1.id, blog_id: blog1.id)
 
-comment2 = Comment.create(content: "Interesting post!", user_id: user2.id)
+comment2 = Comment.create(content: "Interesting post!", user_id: user2.id, blog_id: blog2.id)

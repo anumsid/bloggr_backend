@@ -7,8 +7,8 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def show
-    @blog
-    render json: @blog
+    @comment
+    render json: @comment
   end
 
   def created
@@ -32,7 +32,7 @@ class Api::V1::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit(:content, :user_id)
+    params.permit(:content, :user_id, :blog_id)
   end
 
   def find_comment
